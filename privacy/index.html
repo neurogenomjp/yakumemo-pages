@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー | 処方メモ</title><style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  line-height: 1.8; max-width: 760px; margin: 0 auto; padding: 24px 20px 64px;
+  color: #1c1c1e; background: #fff; }
+@media (prefers-color-scheme: dark) { body { color: #f2f2f7; background: #1c1c1e; }
+  a { color: #6cb2ff; } .nav { border-color: #3a3a3c; } th, td { border-color: #3a3a3c !important; } }
+h1 { font-size: 1.7em; border-bottom: 3px solid #1A6FC4; padding-bottom: 10px; }
+h2 { font-size: 1.25em; margin-top: 2em; border-left: 4px solid #1A6FC4; padding-left: 10px; }
+h3 { font-size: 1.05em; margin-top: 1.6em; }
+a { color: #1A6FC4; }
+table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d1d6; padding: 6px 10px; text-align: left; font-size: .95em; }
+.nav { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 24px;
+  border-bottom: 1px solid #d1d1d6; font-size: .95em; }
+.nav span.brand { font-weight: 700; }
+footer { margin-top: 48px; font-size: .85em; opacity: .7; }
+</style></head>
+<body><div class="nav"><span class="brand">処方メモ</span><a href="https://neurogenomjp.github.io/yakumemo-pages/">ホーム</a><a href="https://neurogenomjp.github.io/yakumemo-pages/terms/">利用規約</a><a href="https://neurogenomjp.github.io/yakumemo-pages/privacy/">プライバシー</a><a href="https://neurogenomjp.github.io/yakumemo-pages/support/">サポート</a><a href="https://neurogenomjp.github.io/yakumemo-pages/en/">English</a></div><h1>プライバシーポリシー</h1>
+<p><strong>サービス名:</strong> 処方メモ (Yakumemo)
+<strong>事業者:</strong> 株式会社tmedilab (以下「当社」といいます)
+<strong>初回公開日:</strong> 2026年6月15日 (下書き)
+<strong>最終改定日:</strong> 2026年6月15日 (下書き)</p>
+<hr />
+<h2>第1条 (適用範囲)</h2>
+<p>本プライバシーポリシー (以下「本ポリシー」といいます) は、当社が提供する iOS アプリケーション「処方メモ」(以下「本アプリ」といいます) および当社が運営するウェブサイトのうち本ポリシーへのリンクを表示するページ (以下、本アプリと総称して「本サービス」といいます) における、ユーザーの個人情報の取り扱いについて定めます。</p>
+<p>本アプリをダウンロード・インストールし、または本サービスを利用された場合、ユーザーは本ポリシーに同意したものとみなします。</p>
+<h2>第2条 (収集する個人情報)</h2>
+<p>当社は、本サービスの提供にあたり、以下の個人情報を取得することがあります。</p>
+<h3>(1) ユーザーが直接提供する情報</h3>
+<ul>
+<li><strong>メールアドレス</strong> — アカウントの登録およびログイン認証のために収集します。</li>
+<li><strong>ニックネーム</strong> — コミュニティ機能における表示名として収集します。本名の入力は求めません。</li>
+<li><strong>パスワード</strong> — ハッシュ化されて Supabase 認証基盤に保管され、原文は当社では一切閲覧できません。</li>
+<li><strong>コミュニティ投稿コンテンツ</strong> — ユーザーがコミュニティ機能を通じて投稿するレビュー本文、評価値 (4軸)、タグ、口コミ等。これらは他のユーザーから閲覧可能な「公開コンテンツ」となります。</li>
+<li><strong>服薬履歴データ</strong> — ユーザーが本アプリ上で記録する、自身および家族メンバーの服薬履歴 (お薬名、服用日時、服用量、メモ等)。これらは原則として公開されず、ユーザー本人およびユーザーが登録した家族メンバーの管理目的でのみ利用されます。</li>
+<li><strong>家族メンバー情報</strong> — ユーザーが登録する家族メンバーの表示名等。表示名は本人名以外の任意の文字列を推奨します。</li>
+</ul>
+<h3>(2) 本アプリの動作に伴い自動的に取得する情報</h3>
+<ul>
+<li><strong>ユーザーID</strong> — Supabase が発行する内部識別子。当社サービス内でのみアカウント識別に使用します。</li>
+<li><strong>ファイルタイムスタンプ</strong> — Apple Required Reason API <code>C617.1</code> に該当。SwiftData の永続化ストアおよびファイル管理 API がアプリ内部で利用します。</li>
+<li><strong>システム起動時刻</strong> — Apple Required Reason API <code>35F9.1</code> に該当。MetricKit による障害計測およびキャッシュ鮮度判定に利用します。</li>
+<li><strong>UserDefaults</strong> — Apple Required Reason API <code>CA92.1</code> に該当。アプリの状態保持に利用します。</li>
+</ul>
+<blockquote>
+<p>※ 補足 (Phase 216 監査による追記): 上記のうち「ニックネーム」「服薬履歴データ」「家族メンバー情報 (表示名)」は、Apple の App Privacy 区分上 <code>NSPrivacyCollectedDataTypeOtherUserContent</code> (ユーザー生成コンテンツ) としてまとめて宣言しています。本アプリは HealthKit を利用しないため、服薬履歴は「健康データ (Health and Fitness)」ではなく「ユーザーコンテンツ (Other User Content)」として取り扱います。</p>
+</blockquote>
+<h3>(3) 当社が取得しない情報</h3>
+<ul>
+<li><strong>広告識別子 (IDFA)</strong> — 本アプリは広告 SDK を導入していないため取得しません (<code>NSPrivacyTracking = false</code>)。</li>
+<li><strong>位置情報</strong> — 本アプリは位置情報の取得 API を使用しません。</li>
+<li><strong>HealthKit データ</strong> — 本アプリは HealthKit を統合しないため、ヘルスケアアプリ経由のデータを一切取得しません。</li>
+<li><strong>連絡先 / 写真ライブラリ / カメラ / マイク</strong> — 本アプリは利用しません。</li>
+<li><strong>第三者分析・トラッキング SDK</strong> (Google Analytics, Firebase, Sentry, Crashlytics 等) — 一切導入していません。</li>
+</ul>
+<h2>第3条 (個人情報の利用目的)</h2>
+<p>当社は、取得した個人情報を以下の目的でのみ利用します。</p>
+<ol>
+<li><strong>アカウント管理および本人認証</strong> — メールアドレス、パスワード、ユーザーID。</li>
+<li><strong>本サービスの機能提供</strong> — 服薬履歴の記録および家族メンバー間での共有 (履歴データ、家族メンバー情報)。</li>
+<li><strong>コミュニティ機能の提供</strong> — レビューの投稿および閲覧 (ニックネーム、投稿コンテンツ)。</li>
+<li><strong>本サービスの品質向上および障害解析</strong> — MetricKit による匿名化されたパフォーマンス計測。</li>
+<li><strong>法令上の義務の履行</strong> — 警察その他の公的機関からの法令に基づく開示請求への対応。</li>
+</ol>
+<h2>第4条 (第三者提供)</h2>
+<p>当社は、ユーザーの同意なく個人情報を第三者に提供しません。ただし、次のいずれかに該当する場合はこの限りではありません。</p>
+<ol>
+<li>法令に基づく開示請求があった場合。</li>
+<li>人の生命、身体または財産の保護のために必要があり、ユーザーの同意を得ることが困難な場合。</li>
+<li>本サービスの提供に必要な範囲内で、第5条に定める委託先に個人情報を取り扱わせる場合。</li>
+</ol>
+<h2>第5条 (個人情報の取扱いの委託 / 第三者サービス利用)</h2>
+<p>当社は、本サービスの提供にあたり、以下の第三者サービスを利用します。各サービスにおける個人情報の取り扱いは、各サービスのプライバシーポリシーに従います。</p>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>提供事業者</th>
+<th>用途</th>
+<th>プライバシーポリシー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supabase</td>
+<td>Supabase Inc. (米国)</td>
+<td>認証 / データ同期 / ファイルストレージ</td>
+<td>https://supabase.com/privacy</td>
+</tr>
+<tr>
+<td>App Store / StoreKit</td>
+<td>Apple Inc. (米国)</td>
+<td>アプリ配信 / サブスクリプション課金</td>
+<td>https://www.apple.com/legal/privacy/</td>
+</tr>
+</tbody>
+</table>
+<p>ユーザーがコミュニティ機能を利用してレビュー等を投稿した場合、その内容は Supabase が管理するデータベースに保存され、当社サービスを利用する他のユーザーから閲覧可能となります。</p>
+<h2>第6条 (Cookie およびトラッキング技術)</h2>
+<p>本アプリは Cookie 等のトラッキング技術を使用しません。本アプリは、Apple の App Tracking Transparency フレームワーク (ATT) で定義されるトラッキングを行いません (<code>NSPrivacyTracking = false</code>)。</p>
+<h2>第7条 (健康情報の取り扱い)</h2>
+<p>本アプリは、ユーザーが入力する服薬履歴を「ユーザーコンテンツ」として取り扱います。Apple HealthKit との連携は行わず、本アプリのデータが Apple ヘルスケアアプリへ送信されることはありません。</p>
+<p>服薬履歴は医療従事者による診断・処方の補助情報としてユーザー自身が活用することを想定しており、当社は本アプリで記録されたデータを医療目的で利用または分析しません。</p>
+<h2>第8条 (個人情報の保存期間)</h2>
+<ul>
+<li>アカウント情報および当社が管理するすべての関連データは、ユーザーがアカウント削除を実行した時点から30日以内に Supabase 環境から削除されます。</li>
+<li>本アプリのアンインストールにより、端末上 (SwiftData) に保管されたキャッシュデータは消去されます。</li>
+<li>法令により保存が義務付けられている情報は、法定の期間に従い保管します。</li>
+</ul>
+<h2>第9条 (ユーザーの権利)</h2>
+<p>ユーザーは、当社が保有する自己の個人情報について、以下の権利を有します。</p>
+<ol>
+<li><strong>開示請求</strong> — 当社が保有する個人情報の開示を求める権利。</li>
+<li><strong>訂正・追加・削除請求</strong> — 個人情報が事実と異なる場合の訂正等を求める権利。</li>
+<li><strong>利用停止・消去請求</strong> — 個人情報の利用停止または消去を求める権利。</li>
+<li><strong>同意の撤回</strong> — 本ポリシーへの同意を将来に向けて撤回する権利 (撤回後は本サービスの利用ができなくなります)。</li>
+</ol>
+<p>これらの権利は、本アプリの「マイページ → アカウント削除」または tmedilab.support@gmail.com への連絡により行使できます。当社は、本人確認のうえ、遅滞なく対応します。</p>
+<h2>第10条 (未成年者のプライバシー)</h2>
+<p>本アプリは App Store における年齢区分「4+」で提供されますが、特に未成年者を対象とした設計ではありません。13歳未満の方が本アプリを利用される場合は、保護者の同意を得たうえでご利用ください。当社は、保護者の同意なく13歳未満の方の個人情報を意図的に収集しません。</p>
+<h2>第11条 (国外への移転)</h2>
+<p>本サービスで利用する Supabase は、データを米国およびアジア太平洋地域 (日本) のデータセンターに保管します。利用にあたり、ユーザーは個人情報が国外に移転されることに同意するものとします。</p>
+<h2>第12条 (本ポリシーの改定)</h2>
+<p>当社は、必要に応じて本ポリシーを改定することがあります。重要な変更がある場合は、本アプリ内通知または当社ウェブサイト上で30日以上前に告知します。改定後の本ポリシーは、当社が指定する効力発生日から適用されます。</p>
+<h2>第13条 (お問い合わせ窓口)</h2>
+<p>本ポリシーに関するお問い合わせは、以下までお寄せください。</p>
+<ul>
+<li>メールアドレス: tmedilab.support@gmail.com</li>
+<li>本アプリ内: 「マイページ → お問い合わせ」フォーム</li>
+</ul>
+<hr />
+<h2>附則</h2>
+<ul>
+<li>制定日: 2026年6月15日 (下書き)</li>
+<li>効力発生日: <strong><em>_</em></strong>____ (公開時に確定)</li>
+<li>バージョン: v1.0</li>
+</ul>
+<footer>© 2026 Takumi Hirose (T-MediLab) — 処方メモ / ShohoNote</footer>
+</body></html>

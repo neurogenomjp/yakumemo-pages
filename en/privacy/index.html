@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy | ShohoNote</title><style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  line-height: 1.8; max-width: 760px; margin: 0 auto; padding: 24px 20px 64px;
+  color: #1c1c1e; background: #fff; }
+@media (prefers-color-scheme: dark) { body { color: #f2f2f7; background: #1c1c1e; }
+  a { color: #6cb2ff; } .nav { border-color: #3a3a3c; } th, td { border-color: #3a3a3c !important; } }
+h1 { font-size: 1.7em; border-bottom: 3px solid #1A6FC4; padding-bottom: 10px; }
+h2 { font-size: 1.25em; margin-top: 2em; border-left: 4px solid #1A6FC4; padding-left: 10px; }
+h3 { font-size: 1.05em; margin-top: 1.6em; }
+a { color: #1A6FC4; }
+table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d1d6; padding: 6px 10px; text-align: left; font-size: .95em; }
+.nav { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 24px;
+  border-bottom: 1px solid #d1d1d6; font-size: .95em; }
+.nav span.brand { font-weight: 700; }
+footer { margin-top: 48px; font-size: .85em; opacity: .7; }
+</style></head>
+<body><div class="nav"><span class="brand">ShohoNote</span><a href="https://neurogenomjp.github.io/yakumemo-pages/en/">Home</a><a href="https://neurogenomjp.github.io/yakumemo-pages/en/terms/">Terms</a><a href="https://neurogenomjp.github.io/yakumemo-pages/en/privacy/">Privacy</a><a href="https://neurogenomjp.github.io/yakumemo-pages/en/support/">Support</a><a href="https://neurogenomjp.github.io/yakumemo-pages/">日本語</a></div><h1>Privacy Policy</h1>
+<blockquote>
+<p><strong>NOTICE — This document is an autopilot-generated draft.</strong> It must be reviewed by qualified counsel before publication. <strong>The Japanese version of this policy is authoritative; the English version is provided for reference only. In the event of any discrepancy, the Japanese version controls.</strong></p>
+</blockquote>
+<p><strong>Service:</strong> ShohoNote (処方メモ)
+<strong>Provider:</strong> tmedilab, Inc. (hereafter "we", "us", or "our")
+<strong>First published:</strong> 2026-06-15 (draft)
+<strong>Last revised:</strong> 2026-06-15 (draft)</p>
+<hr />
+<h2>1. Scope</h2>
+<p>This Privacy Policy ("Policy") applies to the iOS application "ShohoNote" ("App") and any pages on our website that link to this Policy (collectively, "Service"). By downloading, installing, or using the App, you agree to this Policy.</p>
+<h2>2. Information We Collect</h2>
+<h3>2.1 Information you provide</h3>
+<ul>
+<li><strong>Email address</strong> — for account registration and login authentication.</li>
+<li><strong>Nickname</strong> — as a display name in community features. You are not required to enter your real name.</li>
+<li><strong>Password</strong> — stored hashed in the Supabase authentication backend; the plaintext is never accessible to us.</li>
+<li><strong>Community content</strong> — review text, ratings (4 axes), tags, and other content you submit through community features. This content is publicly viewable to other users of the Service.</li>
+<li><strong>Medication history data</strong> — the medication log you enter for yourself and your registered family members (drug name, date/time, dosage, notes). This data is not public and is used only by you and your registered family members.</li>
+<li><strong>Family member information</strong> — display names for the family members you register. We recommend a non-real-name string.</li>
+</ul>
+<h3>2.2 Information collected automatically</h3>
+<ul>
+<li><strong>User ID</strong> — an internal identifier issued by Supabase; used only within the Service for account identification.</li>
+<li><strong>File Timestamp</strong> — Apple Required-Reason-API category <code>C617.1</code>; used by SwiftData and FileManager internals.</li>
+<li><strong>System Boot Time</strong> — Apple Required-Reason-API category <code>35F9.1</code>; used by MetricKit for performance telemetry and cache freshness arithmetic.</li>
+<li><strong>UserDefaults</strong> — Apple Required-Reason-API category <code>CA92.1</code>; used for app state preservation.</li>
+</ul>
+<blockquote>
+<p>Note (added per Phase 216 audit): among the items above, "nickname", "medication history", and "family member display names" are declared under Apple's App Privacy category <code>NSPrivacyCollectedDataTypeOtherUserContent</code> (user-generated content) in PrivacyInfo.xcprivacy. Because ShohoNote does not integrate with HealthKit, medication history is classified as User Content rather than Health and Fitness data.</p>
+</blockquote>
+<h3>2.3 Information we do not collect</h3>
+<ul>
+<li><strong>Advertising identifier (IDFA)</strong> — no ad SDK is integrated (<code>NSPrivacyTracking = false</code>).</li>
+<li><strong>Location data</strong> — the App does not use any location APIs.</li>
+<li><strong>HealthKit data</strong> — the App does not integrate with HealthKit.</li>
+<li><strong>Contacts / Photos / Camera / Microphone</strong> — none of these are accessed.</li>
+<li><strong>Third-party analytics or tracking SDKs</strong> (Google Analytics, Firebase, Sentry, Crashlytics, etc.) — none are integrated.</li>
+</ul>
+<h2>3. Purpose of Use</h2>
+<p>We use collected information solely for the following purposes:</p>
+<ol>
+<li><strong>Account management and authentication</strong> — email, password, user ID.</li>
+<li><strong>Service functionality</strong> — recording medication history and sharing it among the family members you register (history data, family member info).</li>
+<li><strong>Community features</strong> — review posting and viewing (nickname, posted content).</li>
+<li><strong>Service quality improvement and failure analysis</strong> — anonymized performance telemetry via MetricKit.</li>
+<li><strong>Compliance with legal obligations</strong> — responses to law enforcement or other government requests when required by law.</li>
+</ol>
+<h2>4. Third-Party Disclosure</h2>
+<p>We will not disclose personal information to third parties without your consent, except:</p>
+<ol>
+<li>when required by law;</li>
+<li>when necessary to protect a person's life, body, or property and obtaining consent is difficult; or</li>
+<li>when transferring data to processors strictly to provide the Service, as described in Section 5.</li>
+</ol>
+<h2>5. Processors and Third-Party Services</h2>
+<p>The Service uses the following third-party services. Each provider's handling of personal information is governed by that provider's own privacy policy.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Provider</th>
+<th>Purpose</th>
+<th>Privacy Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supabase</td>
+<td>Supabase Inc. (USA)</td>
+<td>Authentication / data sync / file storage</td>
+<td>https://supabase.com/privacy</td>
+</tr>
+<tr>
+<td>App Store / StoreKit</td>
+<td>Apple Inc. (USA)</td>
+<td>App distribution and subscription billing</td>
+<td>https://www.apple.com/legal/privacy/</td>
+</tr>
+</tbody>
+</table>
+<p>When you post content via the community features, that content is stored in Supabase-managed databases and is viewable by other users of the Service.</p>
+<h2>6. Cookies and Tracking</h2>
+<p>The App does not use cookies or similar tracking technologies. The App does not perform "tracking" as defined by Apple's App Tracking Transparency framework (<code>NSPrivacyTracking = false</code>).</p>
+<h2>7. Health Information</h2>
+<p>The App treats medication-history entries that you enter as <strong>user content</strong>, not as protected health information. The App does not integrate with Apple HealthKit and does not send any data to the Apple Health app.</p>
+<p>The medication history feature is intended as a personal record you may share with your healthcare professional. We do not use App data for medical or clinical purposes.</p>
+<h2>8. Retention</h2>
+<ul>
+<li>Account data and all related records we hold are deleted from our Supabase environment within 30 days of you initiating account deletion.</li>
+<li>Cache data stored on-device (SwiftData) is removed when you uninstall the App.</li>
+<li>Information we are required by law to retain will be kept for the legally required period.</li>
+</ul>
+<h2>9. Your Rights</h2>
+<p>You have the following rights regarding personal information we hold about you:</p>
+<ol>
+<li><strong>Right to access</strong> — request disclosure of the personal information we hold.</li>
+<li><strong>Right to rectification</strong> — request correction of inaccurate information.</li>
+<li><strong>Right to erasure</strong> — request deletion or cessation of use of your personal information.</li>
+<li><strong>Right to withdraw consent</strong> — withdraw consent to this Policy with future effect (after which the Service can no longer be used).</li>
+</ol>
+<p>You may exercise these rights via the <strong>My Page → Account Deletion</strong> flow inside the App, or by contacting tmedilab.support@gmail.com. We will respond promptly after verifying your identity.</p>
+<h2>10. Children's Privacy</h2>
+<p>The App is rated 4+ on the App Store but is not specifically directed at children. If you are under 13, please use the App only with parental consent. We do not knowingly collect personal information from anyone under 13 without parental consent.</p>
+<h2>11. International Transfers</h2>
+<p>Supabase stores data in data centers located in the United States and Asia-Pacific regions (including Japan). By using the Service, you consent to your personal information being transferred internationally.</p>
+<h2>12. Changes to This Policy</h2>
+<p>We may revise this Policy from time to time. Material changes will be announced via in-app notification or our website at least 30 days in advance. The revised Policy will become effective on the date we specify.</p>
+<h2>13. Contact</h2>
+<p>Questions about this Policy:</p>
+<ul>
+<li>Email: tmedilab.support@gmail.com</li>
+<li>In-app: "My Page → Contact" form</li>
+</ul>
+<hr />
+<h2>Appendix</h2>
+<ul>
+<li>Initial publication: 2026-06-15 (draft)</li>
+<li>Effective date: <strong><em>_</em></strong>____ (to be confirmed at publication)</li>
+<li>Version: v1.0</li>
+</ul>
+<footer>© 2026 Takumi Hirose (T-MediLab) — 処方メモ / ShohoNote</footer>
+</body></html>
