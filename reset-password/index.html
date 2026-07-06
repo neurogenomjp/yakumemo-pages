@@ -73,20 +73,36 @@ footer { margin-top: 48px; font-size: .85em; opacity: .7; }
 
   var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  // 検証成功時は detectSessionInUrl がフラグメントの復旧セッションを取り込む。
-  var ready = false;
-  client.auth.onAuthStateChange(function (event, session) {
-    if (session && !ready) { ready = true; show("form"); }
-  });
-  // フォールバック: 既に取り込み済みのセッションを拾う。少し待っても
-  // セッションが無ければ、直接開かれた（リンク経由でない）と判断。
-  setTimeout(function () {
-    if (ready) return;
-    client.auth.getSession().then(function (r) {
-      if (r.data.session) { ready = true; show("form"); }
-      else { show("expired"); }
+  // メールテンプレートは token_hash をクエリで直接このページに渡す
+  // （?token_hash=...&type=recovery）。検証はこのページ自身が行う。
+  // アプリ(supabase-swift)は PKCE フローのため、GoTrue の /verify 経由
+  // だと ?code=... が返り、code_verifier を持たない Web ページでは
+  // セッション交換できない — token_hash 方式はその制約を受けない。
+  var params = new URLSearchParams(location.search);
+  var tokenHash = params.get("token_hash");
+  if (tokenHash) {
+    client.auth.verifyOtp({ type: "recovery", token_hash: tokenHash }).then(function (r) {
+      if (r.error || !r.data.session) { show("expired"); }
+      else { show("form"); }
     });
-  }, 1500);
+    // 検証後は URL からトークンを消す（リロードでの再検証エラー防止。
+    // セッションは storage に残るので下のフォールバックが拾う）。
+    history.replaceState(null, "", location.pathname);
+  } else {
+    // token_hash なし: 旧形式リンク（#access_token）や、検証済み後の
+    // リロードに対応。少し待ってもセッションが無ければ無効と判断。
+    var ready = false;
+    client.auth.onAuthStateChange(function (event, session) {
+      if (session && !ready) { ready = true; show("form"); }
+    });
+    setTimeout(function () {
+      if (ready) return;
+      client.auth.getSession().then(function (r) {
+        if (r.data.session) { ready = true; show("form"); }
+        else { show("expired"); }
+      });
+    }, 1500);
+  }
 
   document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault();
