@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>パスワード再設定 | 処方メモ</title><style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  line-height: 1.8; max-width: 480px; margin: 0 auto; padding: 24px 20px 64px;
+  color: #1c1c1e; background: #fff; }
+@media (prefers-color-scheme: dark) { body { color: #f2f2f7; background: #1c1c1e; }
+  a { color: #6cb2ff; } .nav { border-color: #3a3a3c; }
+  input { background: #2c2c2e; color: #f2f2f7; border-color: #3a3a3c; } }
+h1 { font-size: 1.5em; border-bottom: 3px solid #1A6FC4; padding-bottom: 10px; }
+a { color: #1A6FC4; }
+.nav { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 24px;
+  border-bottom: 1px solid #d1d1d6; font-size: .95em; }
+.nav span.brand { font-weight: 700; }
+label { display: block; font-weight: 600; margin-top: 1.2em; font-size: .95em; }
+input { width: 100%; padding: 12px; margin-top: 6px; font-size: 1em;
+  border: 1px solid #d1d1d6; border-radius: 10px; }
+button { width: 100%; margin-top: 1.6em; padding: 14px; font-size: 1.05em; font-weight: 700;
+  color: #fff; background: #1A6FC4; border: none; border-radius: 12px; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+.msg { margin-top: 1.2em; padding: 12px 14px; border-radius: 10px; font-size: .95em; }
+.msg.error { background: rgba(255,59,48,.12); }
+.msg.ok { background: rgba(52,199,89,.15); }
+.hidden { display: none; }
+footer { margin-top: 48px; font-size: .85em; opacity: .7; }
+</style></head>
+<body>
+<div class="nav"><span class="brand">処方メモ</span><a href="https://neurogenomjp.github.io/yakumemo-pages/">ホーム</a><a href="https://neurogenomjp.github.io/yakumemo-pages/support/">サポート</a></div>
+<h1>パスワード再設定</h1>
+
+<p id="checking">確認中…</p>
+
+<div id="expired" class="hidden">
+  <div class="msg error">このリンクは無効か、有効期限が切れています。<br>
+  アプリの「パスワードを忘れた方」から、もう一度再設定メールをお送りください。</div>
+</div>
+
+<form id="form" class="hidden">
+  <label for="pw">新しいパスワード（8文字以上）</label>
+  <input id="pw" type="password" autocomplete="new-password" minlength="8" required>
+  <label for="pw2">新しいパスワード（確認）</label>
+  <input id="pw2" type="password" autocomplete="new-password" minlength="8" required>
+  <button id="submit" type="submit">パスワードを変更する</button>
+  <div id="formError" class="msg error hidden"></div>
+</form>
+
+<div id="done" class="hidden">
+  <div class="msg ok">パスワードを変更しました。<br>
+  処方メモアプリに戻り、新しいパスワードでログインしてください。</div>
+</div>
+
+<footer>© 株式会社tmedilab</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function () {
+  var SUPABASE_URL = "https://pqdzvjlkhrisxttboemz.supabase.co";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZHp2amxraHJpc3h0dGJvZW16Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNDgxMTMsImV4cCI6MjA4ODYyNDExM30.ICn7WmlmwBKcdaz2i0mglcNtl66j31Ljtwpw_JEx1Nw";
+
+  function show(id) {
+    ["checking", "expired", "form", "done"].forEach(function (x) {
+      document.getElementById(x).classList.toggle("hidden", x !== id);
+    });
+  }
+
+  // メールリンクの検証失敗（期限切れ等）は URL フラグメントの error で届く。
+  var hash = new URLSearchParams(location.hash.slice(1));
+  if (hash.get("error")) { show("expired"); return; }
+
+  var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // 検証成功時は detectSessionInUrl がフラグメントの復旧セッションを取り込む。
+  var ready = false;
+  client.auth.onAuthStateChange(function (event, session) {
+    if (session && !ready) { ready = true; show("form"); }
+  });
+  // フォールバック: 既に取り込み済みのセッションを拾う。少し待っても
+  // セッションが無ければ、直接開かれた（リンク経由でない）と判断。
+  setTimeout(function () {
+    if (ready) return;
+    client.auth.getSession().then(function (r) {
+      if (r.data.session) { ready = true; show("form"); }
+      else { show("expired"); }
+    });
+  }, 1500);
+
+  document.getElementById("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var pw = document.getElementById("pw").value;
+    var pw2 = document.getElementById("pw2").value;
+    var err = document.getElementById("formError");
+    err.classList.add("hidden");
+    if (pw.length < 8) { err.textContent = "パスワードは8文字以上にしてください。"; err.classList.remove("hidden"); return; }
+    if (pw !== pw2) { err.textContent = "確認用パスワードが一致しません。"; err.classList.remove("hidden"); return; }
+    var btn = document.getElementById("submit");
+    btn.disabled = true;
+    client.auth.updateUser({ password: pw }).then(function (r) {
+      if (r.error) {
+        btn.disabled = false;
+        err.textContent = "変更に失敗しました: " + (r.error.message === "New password should be different from the old password."
+          ? "以前と同じパスワードは使えません。" : "しばらくしてからもう一度お試しください。");
+        err.classList.remove("hidden");
+      } else {
+        show("done");
+        client.auth.signOut();
+      }
+    });
+  });
+})();
+</script>
+</body></html>
