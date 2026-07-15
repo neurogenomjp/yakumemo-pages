@@ -48,7 +48,7 @@ footer { margin-top: 48px; font-size: .85em; opacity: .7; }
 <li><strong>UserDefaults</strong> — Apple Required Reason API <code>CA92.1</code> に該当。アプリの状態保持に利用します。</li>
 </ul>
 <blockquote>
-<p>※ 補足 (Phase 216 監査による追記): 上記のうち「ニックネーム」「服薬履歴データ」「家族メンバー情報 (表示名)」は、Apple の App Privacy 区分上 <code>NSPrivacyCollectedDataTypeOtherUserContent</code> (ユーザー生成コンテンツ) としてまとめて宣言しています。本アプリは HealthKit を利用しないため、服薬履歴は「健康データ (Health and Fitness)」ではなく「ユーザーコンテンツ (Other User Content)」として取り扱います。</p>
+<p>※ 補足: 「ニックネーム」「家族メンバー情報 (表示名)」等はユーザー生成コンテンツ (<code>Other User Content</code>) として宣言しています。加えて、服薬履歴・病名・症状・副作用等のユーザーが入力する健康に関する情報は、Apple の定義に従い「健康 (Health)」データとしても宣言しています (Apple は Health を HealthKit 連携に限定せず、ユーザーが提供する健康・医療データを含むものと定義しています)。いずれもユーザーに紐づく形で、本サービスの機能提供の目的にのみ取得・利用します。</p>
 </blockquote>
 <h3>(3) 当方が取得しない情報</h3>
 <ul>
